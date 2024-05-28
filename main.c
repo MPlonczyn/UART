@@ -6,9 +6,30 @@ int main(){
 	LedInit();
 	UART_InitWithInt(9600);
 	ServoInit(50);
+	
 
 	while(1){
-		if(cOdebranyZnak == 'c'){
+		switch(cOdebranyZnak){
+			case 'c':
+				ServoCallib();
+				break;
+			
+			case '1':
+				ServoGoTo(sServo.uiDesiredPosition + 12);
+				break;
+			
+			case '2':
+				ServoGoTo(24);
+				break;
+			
+			case '3':
+				ServoGoTo(36);
+			break;
+		}
+	}
+}
+
+/*if(cOdebranyZnak == 'c'){
 			ServoCallib();
 			cOdebranyZnak = 0;
 		}
@@ -22,5 +43,4 @@ int main(){
 		else if(cOdebranyZnak == '3'){
 			ServoGoTo(36);
 		}
-	}
-}
+*/

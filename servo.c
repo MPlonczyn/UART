@@ -2,6 +2,7 @@
 #include "led.h"
 #include "servo.h"
 #include "timer_interrupts.h"
+#include "uart.h"
 
 #define DETECOR_bm	(1<<10)
 
@@ -79,8 +80,10 @@ void ServoInit(unsigned int uiServoFrequency){
 
 void ServoCallib(){
 	sServo.eState = CALLIB;
+	cOdebranyZnak = 0;
 }
 
 void ServoGoTo(unsigned int uiPosition){
 	sServo.uiDesiredPosition = uiPosition;
+	cOdebranyZnak = 0;
 }
